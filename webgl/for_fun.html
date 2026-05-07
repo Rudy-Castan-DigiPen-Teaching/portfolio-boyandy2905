@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Portfolio Background</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #07111f;
+        }
+
+        canvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(75, 180, 255, 0.25), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(160, 80, 255, 0.20), transparent 35%),
+                linear-gradient(135deg, #07111f 0%, #101b35 50%, #060914 100%);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="backgroundCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById("backgroundCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const mouse = {
+            x: window.innerWidth * 0.5,
+            y: window.innerHeight * 0.5
+        };
+
+        const particles = [];
+        const particleCount = 85;
+
+        function resizeCanvas() {
+            const ratio = window.devicePixelRatio || 1;
+            canvas.width = Math.floor(window.innerWidth * ratio);
+            canvas.height = Math.floor(window.innerHeight * ratio);
+            canvas.style.width = window.innerWidth + "px";
+            canvas.style.height = window.innerHeight + "px";
+            ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        }
+
+        function randomRange(min, max) {
+            return min + Math.random() * (max - min);
+        }
+
+        function createParticles() {
+            particles.length = 0;
+
+            for (let i = 0; i < particleCount; ++i) {
+                particles.push({
+                    x: randomRange(0, window.innerWidth),
+                    y: randomRange(0, window.innerHeight),
+                    vx: randomRange(-0.25, 0.25),
+                    vy: randomRange(-0.20, 0.20),
+                    radius: randomRange(1.2, 3.2),
+                    phase: randomRange(0, Math.PI * 2)
+                });
+            }
+        }
+
+        function drawGrid(time) {
+            const spacing = 46;
+            const offsetX = (time * 0.015) % spacing;
+            const offsetY = (time * 0.010) % spacing;
+
+            ctx.save();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "rgba(120, 200, 255, 0.08)";
+
+            for (let x = -spacing; x < window.innerWidth + spacing; x += spacing) {
+                ctx.beginPath();
+                ctx.moveTo(x + offsetX, 0);
+                ctx.lineTo(x + offsetX, window.innerHeight);
+                ctx.stroke();
+            }
+
+            for (let y = -spacing; y < window.innerHeight + spacing; y += spacing) {
+                ctx.beginPath();
+                ctx.moveTo(0, y + offsetY);
+                ctx.lineTo(window.innerWidth, y + offsetY);
+                ctx.stroke();
+            }
+
+            ctx.restore();
+        }
+
+        function drawGlow(x, y, radius, color) {
+            const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+            gradient.addColorStop(0, color);
+            gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function updateParticles(time) {
+            for (const p of particles) {
+                const dx = mouse.x - p.x;
+                const dy = mouse.y - p.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const influence = Math.max(0, 1 - distance / 220);
+
+                p.vx += dx * influence * 0.00006;
+                p.vy += dy * influence * 0.00006;
+
+                p.x += p.vx + Math.sin(time * 0.001 + p.phase) * 0.08;
+                p.y += p.vy + Math.cos(time * 0.0012 + p.phase) * 0.08;
+
+                p.vx *= 0.992;
+                p.vy *= 0.992;
+
+                if (p.x < -20) p.x = window.innerWidth + 20;
+                if (p.x > window.innerWidth + 20) p.x = -20;
+                if (p.y < -20) p.y = window.innerHeight + 20;
+                if (p.y > window.innerHeight + 20) p.y = -20;
+            }
+        }
+
+        function drawConnections() {
+            for (let i = 0; i < particles.length; ++i) {
+                for (let j = i + 1; j < particles.length; ++j) {
+                    const a = particles[i];
+                    const b = particles[j];
+                    const dx = a.x - b.x;
+                    const dy = a.y - b.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 130) {
+                        const alpha = (1 - distance / 130) * 0.18;
+                        ctx.strokeStyle = "rgba(120, 210, 255, " + alpha + ")";
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function drawParticles(time) {
+            for (const p of particles) {
+                const pulse = 0.6 + Math.sin(time * 0.003 + p.phase) * 0.4;
+                ctx.fillStyle = "rgba(170, 230, 255, " + (0.45 + pulse * 0.35) + ")";
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius + pulse * 1.2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function drawScanLines(time) {
+            ctx.save();
+            ctx.globalAlpha = 0.18;
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.06)";
+            ctx.lineWidth = 1;
+
+            const y = (time * 0.04) % window.innerHeight;
+            for (let i = 0; i < 5; ++i) {
+                ctx.beginPath();
+                ctx.moveTo(0, y + i * 5);
+                ctx.lineTo(window.innerWidth, y + i * 5);
+                ctx.stroke();
+            }
+
+            ctx.restore();
+        }
+
+        function animate(time) {
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+            drawGlow(window.innerWidth * 0.22, window.innerHeight * 0.25, 360, "rgba(40, 150, 255, 0.16)");
+            drawGlow(window.innerWidth * 0.78, window.innerHeight * 0.68, 420, "rgba(160, 70, 255, 0.14)");
+            drawGlow(mouse.x, mouse.y, 260, "rgba(80, 220, 255, 0.13)");
+
+            drawGrid(time);
+            updateParticles(time);
+            drawConnections();
+            drawParticles(time);
+            drawScanLines(time);
+
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener("resize", () => {
+            resizeCanvas();
+            createParticles();
+        });
+
+        window.addEventListener("mousemove", (event) => {
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+        });
+
+        window.addEventListener("touchmove", (event) => {
+            if (event.touches.length > 0) {
+                mouse.x = event.touches[0].clientX;
+                mouse.y = event.touches[0].clientY;
+            }
+        }, { passive: true });
+
+        resizeCanvas();
+        createParticles();
+        requestAnimationFrame(animate);
+    </script>
+</body>
+</html>

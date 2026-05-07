@@ -550,3 +550,161 @@ header {
   margin: 0 auto; /* Centering */
   border: none;
 }
+
+/* Intro title color */
+.section__title--intro {
+    color: white;
+}
+
+/* Animated color for the name */
+.section__title--intro strong {
+    background: linear-gradient(
+        90deg,
+        #00d4ff,
+        #8a5cff,
+        #ff4fd8,
+        #ffe66d,
+        #00d4ff
+    );
+    background-size: 300% 300%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    animation: nameColorShift 4s ease-in-out infinite;
+}
+
+@keyframes nameColorShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Theme and Language Controls */
+
+.controls {
+    position: fixed;
+    top: 5em;
+    right: 2em;
+    display: flex;
+    gap: 1em;
+    z-index: 999;
+}
+
+.theme-toggle,
+.language-toggle {
+    padding: 0.5em 1em;
+    background: var(--clr-accent);
+    color: var(--clr-dark);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: var(--fw-bold);
+    font-size: 0.9rem;
+    transition: all 200ms ease-in-out;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle:hover,
+.language-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.theme-toggle:active,
+.language-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Dark Theme */
+body.dark-theme {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+body.dark-theme,
+body.dark-theme * {
+    color: #ffffff;
+}
+
+body.dark-theme header {
+    background-color: rgba(50, 50, 50, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme .logo {
+    background-color: rgba(50, 50, 50, 0.7);
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+body.dark-theme .nav {
+    background: rgba(48, 48, 48, 0.98);
+    color: #ffffff;
+}
+
+body.dark-theme .btn {
+    background: var(--clr-accent);
+    color: #303030;
+}
+
+body.dark-theme .my-services {
+    background-color: #2a2a2a;
+    background-image: url(../img/skills-bg.jpg);
+    background-blend-mode: overlay;
+    color: #ffffff;
+}
+
+body.dark-theme .section__title--services {
+    color: var(--clr-accent);
+}
+
+body.dark-theme .my-projects {
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+
+body.dark-theme .portfolio__item {
+    background: #1a1a1a;
+}
+
+body.dark-theme .footer {
+    background: #0f0f0f;
+    color: var(--clr-accent);
+}
+
+body.dark-theme .theme-toggle,
+body.dark-theme .language-toggle {
+    background: var(--clr-accent);
+    color: #303030;
+    box-shadow: 0 2px 8px rgba(22, 224, 189, 0.3);
+}
+
+body.dark-theme .section__title--intro {
+    color: #ffffff;
+}
+
+body.dark-theme .about-me {
+    max-width: 1000px;
+    margin: 0 auto;
+    color: #ffffff;
+}
+
+body.dark-theme a {
+    color: var(--clr-accent);
+}
+
+body.dark-theme .about-me__img {
+    box-shadow: 0 0 20px rgba(22, 224, 189, 0.3);
+}

@@ -69,23 +69,40 @@
 
     <div class="portfolio-item-individual">
         <h2>Project Overview</h2>
-        <p>Provide a brief description of the project, its purpose, and what you aimed to achieve.</p>
+        <p>
+            Hello Quad is a CS250 graphics project focused on rendering an animated textured quad using OpenGL and WebGL. 
+            The project demonstrates vertex buffers, index buffers, vertex arrays, texture loading, shader animation, 
+            and a custom texture created for the assignment.
+        </p>
 
         <h2>Tasks Completed</h2>
         <ul>
-            <li>Describe the tasks you completed for this project.</li>
-            <li>Be specific about your contributions and the technologies used.</li>
+            <li>Implemented the required OpenGL wrapper classes: VertexBuffer, IndexBuffer, VertexArray, and Texture.</li>
+            <li>Rendered a textured quad using vertex data, index data, and shader attributes.</li>
+            <li>Created a custom texture based on my initials, S and H, using a pixel grid pattern.</li>
+            <li>Added vertex shader animation for scaling, rotation, mouse-following movement, and soft wobble effects.</li>
+            <li>Added fragment shader animation for texture fading and slowly changing four-corner colors.</li>
+            <li>Built and embedded the WebGL release version into this portfolio page.</li>
         </ul>
 
         <h2>Reflection</h2>
-        <p>Reflect on the project, discussing any challenges faced, solutions implemented, and what you learned from the
-            experience.</p>
+        <p>
+            This project helped me understand how vertex data, index buffers, vertex arrays, textures, and shaders work 
+            together in the graphics pipeline. One challenge was making the indexed draw call work correctly, which required 
+            correctly creating and binding the element array buffer. I also learned how uniforms such as time, frame count, 
+            and mouse position can be used to create interactive shader animation.
+        </p>
     </div>
 
     <div class="portfolio-item-individual">
         <h2>Demo</h2>
-        <!-- TODO demo the webgl version of the project -->
         <iframe id="demo" src="../webgl/D01HelloQuad/graphics_fun.html"></iframe>
+
+        <p>
+            <a href="../webgl/D01HelloQuad/graphics_fun.html" target="_blank">
+                Open Hello Quad Demo in a new tab
+            </a>
+        </p>
     </div>
 
 

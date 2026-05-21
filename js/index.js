@@ -47,6 +47,7 @@ if (savedTheme === "dark") {
 const savedLanguage = localStorage.getItem("language") || "en";
 htmlElement.lang = savedLanguage;
 languageToggle.textContent = savedLanguage === "en" ? "KO" : "EN";
+updatePageLanguage(savedLanguage);
 
 // Theme toggle event
 themeToggle.addEventListener("click", () => {
@@ -88,7 +89,25 @@ function updatePageLanguage(lang) {
             aboutBody2: "I am interested in both game design and programming. Through team projects and coursework, I am learning how to create interactive experiences that combine gameplay, visuals, and player feedback.",
             myProjects: "My Projects",
             projectSelection: "A selection of my range of projects",
-            projectsBtn: "Projects"
+            projectsBtn: "Projects",
+
+            helloProjectTitle: 'Project <strong>Hello Quad</strong>',
+            helloSubtitle: "3D Graphics",
+            helloOverviewTitle: "Project Overview",
+            helloOverviewText: "Hello Quad is a CS250 graphics project focused on rendering an animated textured quad using OpenGL and WebGL. The project demonstrates vertex buffers, index buffers, vertex arrays, texture loading, shader animation, and a custom texture created for the assignment.",
+            helloTasksTitle: "Tasks Completed",
+            helloTasks: [
+                "Implemented the required OpenGL wrapper classes: VertexBuffer, IndexBuffer, VertexArray, and Texture.",
+                "Rendered a textured quad using vertex data, index data, and shader attributes.",
+                "Created a custom texture based on my initials, S and H, using a pixel grid pattern.",
+                "Added vertex shader animation for scaling, rotation, mouse-following movement, and soft wobble effects.",
+                "Added fragment shader animation for texture fading and slowly changing four-corner colors.",
+                "Built and embedded the WebGL release version into this portfolio page."
+            ],
+            helloReflectionTitle: "Reflection",
+            helloReflectionText: "This project helped me understand how vertex data, index buffers, vertex arrays, textures, and shaders work together in the graphics pipeline. One challenge was making the indexed draw call work correctly, which required correctly creating and binding the element array buffer. I also learned how uniforms such as time, frame count, and mouse position can be used to create interactive shader animation.",
+            helloDemoTitle: "Demo",
+            helloDemoLink: "Open Hello Quad Demo in a new tab"
         },
         ko: {
             home: "홈",
@@ -109,39 +128,89 @@ function updatePageLanguage(lang) {
             aboutBody2: "게임 디자인과 프로그래밍 모두에 관심이 있습니다. 팀 프로젝트와 과정 작업을 통해 게임플레이, 시각 및 플레이어 피드백을 결합한 대화형 경험을 만드는 방법을 배우고 있습니다.",
             myProjects: "내 프로젝트",
             projectSelection: "내 프로젝트 범위의 선택",
-            projectsBtn: "프로젝트"
+            projectsBtn: "프로젝트",
+
+            helloProjectTitle: '프로젝트 <strong>Hello Quad</strong>',
+            helloSubtitle: "3D 그래픽스",
+            helloOverviewTitle: "프로젝트 개요",
+            helloOverviewText: "Hello Quad는 OpenGL과 WebGL을 사용하여 애니메이션이 적용된 텍스처 사각형을 렌더링하는 CS250 그래픽스 프로젝트입니다. 이 프로젝트는 vertex buffer, index buffer, vertex array, texture loading, shader animation, 그리고 과제를 위해 직접 제작한 custom texture를 보여줍니다.",
+            helloTasksTitle: "완료한 작업",
+            helloTasks: [
+                "필수 OpenGL wrapper 클래스인 VertexBuffer, IndexBuffer, VertexArray, Texture를 구현했습니다.",
+                "정점 데이터, 인덱스 데이터, shader attribute를 사용하여 텍스처가 적용된 quad를 렌더링했습니다.",
+                "제 이름의 이니셜 S와 H를 바탕으로 픽셀 격자 패턴의 custom texture를 제작했습니다.",
+                "크기 변화, 회전, 마우스 추적, 부드러운 흔들림 효과를 위한 vertex shader animation을 추가했습니다.",
+                "텍스처 fade와 네 귀퉁이 색이 천천히 변하는 fragment shader animation을 추가했습니다.",
+                "WebGL release 버전을 빌드하고 이 포트폴리오 페이지에 삽입했습니다."
+            ],
+            helloReflectionTitle: "회고",
+            helloReflectionText: "이 프로젝트를 통해 vertex data, index buffer, vertex array, texture, shader가 그래픽스 파이프라인에서 어떻게 함께 작동하는지 이해할 수 있었습니다. 특히 indexed draw call을 정상적으로 작동시키기 위해 element array buffer를 올바르게 생성하고 바인딩해야 했던 점이 주요 과제였습니다. 또한 time, frame count, mouse position 같은 uniform을 사용하여 상호작용 가능한 shader animation을 만드는 방법을 배웠습니다.",
+            helloDemoTitle: "데모",
+            helloDemoLink: "새 탭에서 Hello Quad 데모 열기"
         }
     };
 
-    // Update nav links
+    const setText = (selector, text) => {
+        const el = document.querySelector(selector);
+        if (el && text !== undefined) {
+            el.textContent = text;
+        }
+    };
+
+    const setList = (selector, items) => {
+        const listItems = document.querySelectorAll(`${selector} li`);
+        if (!items || listItems.length === 0) {
+            return;
+        }
+
+        listItems.forEach((li, index) => {
+            if (items[index] !== undefined) {
+                li.textContent = items[index];
+            }
+        });
+    };
+
+    const setHTML = (selector, html) => {
+        const el = document.querySelector(selector);
+        if (el && html !== undefined) {
+            el.innerHTML = html;
+        }
+    };
+
+    // Update nav links for index.html
     const navLinks = [
         { selector: '.nav__link[href="#home"]', key: "home" },
         { selector: '.nav__link[href="#skills"]', key: "skills" },
         { selector: '.nav__link[href="#about"]', key: "about" },
         { selector: '.nav__link[href="#projects"]', key: "projects" },
-        { selector: '.nav__link[href="#resume"]', key: "resume" }
+        { selector: '.nav__link[href="#resume"]', key: "resume" },
+
+        // Update nav links for portfolio pages such as 01_hello.html
+        { selector: '.nav__link[href="../index.html"]', key: "home" },
+        { selector: '.nav__link[href="../index.html#skills"]', key: "skills" },
+        { selector: '.nav__link[href="../index.html#about"]', key: "about" },
+        { selector: '.nav__link[href="../index.html#projects"]', key: "projects" },
+        { selector: '.nav__link[href="../index.html#resume"]', key: "resume" }
     ];
 
     navLinks.forEach(link => {
-        const el = document.querySelector(link.selector);
-        if (el) el.textContent = translations[lang][link.key];
+        setText(link.selector, translations[lang][link.key]);
     });
 
-    // Update section titles and content
-    document.querySelector(".section__title--services").textContent = translations[lang].learning;
-    document.querySelector(".service:nth-child(1) h3").textContent = translations[lang].graphics;
-    document.querySelector(".service:nth-child(2) h3").textContent = translations[lang].cpp;
-    document.querySelector(".service:nth-child(3) h3").textContent = translations[lang].gamedev;
+    // Main index.html page
+    setText(".section__title--services", translations[lang].learning);
+    setText(".service:nth-child(1) h3", translations[lang].graphics);
+    setText(".service:nth-child(2) h3", translations[lang].cpp);
+    setText(".service:nth-child(3) h3", translations[lang].gamedev);
 
-    document.querySelector(".service:nth-child(1) p").textContent = translations[lang].graphicsDesc;
-    document.querySelector(".service:nth-child(2) p").textContent = translations[lang].cppDesc;
-    document.querySelector(".service:nth-child(3) p").textContent = translations[lang].gamedevDesc;
+    setText(".service:nth-child(1) p", translations[lang].graphicsDesc);
+    setText(".service:nth-child(2) p", translations[lang].cppDesc);
+    setText(".service:nth-child(3) p", translations[lang].gamedevDesc);
 
-    const projectsBtn = document.querySelector(".my-services .btn");
-    if (projectsBtn) projectsBtn.textContent = translations[lang].projectsBtn;
+    setText(".my-services .btn", translations[lang].projectsBtn);
 
-    document.querySelector(".section__title--about").textContent = translations[lang].who;
-    document.querySelector(".section__subtitle--about").textContent = translations[lang].cs;
+    setText(".section__title--about", translations[lang].who);
+    setText(".section__subtitle--about", translations[lang].cs);
 
     const aboutParagraphs = document.querySelectorAll(".about-me__body p");
     if (aboutParagraphs.length >= 2) {
@@ -149,8 +218,23 @@ function updatePageLanguage(lang) {
         aboutParagraphs[1].textContent = translations[lang].aboutBody2;
     }
 
-    document.querySelector(".section__title--projects").textContent = translations[lang].myProjects;
-    document.querySelector(".section__subtitle--projects").textContent = translations[lang].projectSelection;
+    setText(".section__title--projects", translations[lang].myProjects);
+    setText(".section__subtitle--projects", translations[lang].projectSelection);
+    setText(".section__title--resume", translations[lang].resume);
 
-    document.querySelector(".section__title--resume").textContent = translations[lang].resume;
+    // Hello Quad project page
+    setHTML(".hello-project-title", translations[lang].helloProjectTitle);
+    setText(".hello-project-subtitle", translations[lang].helloSubtitle);
+
+    setText(".hello-overview-title", translations[lang].helloOverviewTitle);
+    setText(".hello-overview-text", translations[lang].helloOverviewText);
+
+    setText(".hello-tasks-title", translations[lang].helloTasksTitle);
+    setList(".hello-tasks-list", translations[lang].helloTasks);
+
+    setText(".hello-reflection-title", translations[lang].helloReflectionTitle);
+    setText(".hello-reflection-text", translations[lang].helloReflectionText);
+
+    setText(".hello-demo-title", translations[lang].helloDemoTitle);
+    setText(".hello-demo-link", translations[lang].helloDemoLink);
 }

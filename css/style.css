@@ -708,3 +708,11 @@ body.dark-theme a {
 body.dark-theme .about-me__img {
     box-shadow: 0 0 20px rgba(22, 224, 189, 0.3);
 }
+
+.intro .hello-project-title {
+    color: var(--clr-dark);
+}
+
+body.dark-theme .intro .hello-project-title {
+    color: var(--clr-light);
+}

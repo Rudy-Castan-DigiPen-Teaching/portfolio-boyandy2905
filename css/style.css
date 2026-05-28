@@ -716,3 +716,11 @@ body.dark-theme .about-me__img {
 body.dark-theme .intro .hello-project-title {
     color: var(--clr-light);
 }
+
+.intro .meshes-project-title {
+    color: var(--clr-dark);
+}
+
+body.dark-theme .intro .meshes-project-title {
+    color: var(--clr-light);
+}

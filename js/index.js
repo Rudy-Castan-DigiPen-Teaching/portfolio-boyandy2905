@@ -107,7 +107,26 @@ function updatePageLanguage(lang) {
             helloReflectionTitle: "Reflection",
             helloReflectionText: "This project helped me understand how vertex data, index buffers, vertex arrays, textures, and shaders work together in the graphics pipeline. One challenge was making the indexed draw call work correctly, which required correctly creating and binding the element array buffer. I also learned how uniforms such as time, frame count, and mouse position can be used to create interactive shader animation.",
             helloDemoTitle: "Demo",
-            helloDemoLink: "Open Hello Quad Demo in a new tab"
+            helloDemoLink: "Open Hello Quad Demo in a new tab",
+
+            meshesProjectTitle: 'Project <strong>Procedural Geometric Modeling</strong>',
+            meshesSubtitle: "3D Graphics",
+            meshesOverviewTitle: "Project Overview",
+            meshesOverviewText: "Procedural Geometric Modeling is a CS250 graphics project focused on generating 3D mesh geometry directly in code. The project demonstrates how vertex positions, normals, texture coordinates, and index buffers work together to build common shapes such as a plane, cube, sphere, torus, cylinder, cone, and an additional custom clover mesh.",
+            meshesTasksTitle: "Tasks Completed",
+            meshesTasks: [
+                "Registered the new D02 Procedural Meshes demo in the existing demo factory system.",
+                "Added the required shader, texture, material, and mesh source files to the project build.",
+                "Implemented procedural mesh generation for plane, cube, sphere, torus, cylinder, and cone geometry.",
+                "Generated vertex positions, normals, UV coordinates, triangle indices, and line indices for mesh rendering.",
+                "Implemented cap generation for closed shapes such as the cylinder and cone.",
+                "Created an additional custom clover-shaped mesh to experiment with parametric surface generation.",
+                "Built and embedded the WebGL release version into this portfolio page."
+            ],
+            meshesReflectionTitle: "Reflection",
+            meshesReflectionText: "This project helped me understand how procedural geometry is constructed from mathematical rules rather than imported model files. The most challenging part was making the vertex order, triangle winding, normals, and caps work correctly for different shapes. Through this assignment, I learned how indexed meshes reduce duplicated data and how UV coordinates affect the way textures appear on generated 3D objects.",
+            meshesDemoTitle: "Demo",
+            meshesDemoLink: "Open Procedural Meshes Demo in a new tab"
         },
         ko: {
             home: "홈",
@@ -146,7 +165,26 @@ function updatePageLanguage(lang) {
             helloReflectionTitle: "회고",
             helloReflectionText: "이 프로젝트를 통해 vertex data, index buffer, vertex array, texture, shader가 그래픽스 파이프라인에서 어떻게 함께 작동하는지 이해할 수 있었습니다. 특히 indexed draw call을 정상적으로 작동시키기 위해 element array buffer를 올바르게 생성하고 바인딩해야 했던 점이 주요 과제였습니다. 또한 time, frame count, mouse position 같은 uniform을 사용하여 상호작용 가능한 shader animation을 만드는 방법을 배웠습니다.",
             helloDemoTitle: "데모",
-            helloDemoLink: "새 탭에서 Hello Quad 데모 열기"
+            helloDemoLink: "새 탭에서 Hello Quad 데모 열기",
+
+            meshesProjectTitle: '프로젝트 <strong>Procedural Geometric Modeling</strong>',
+            meshesSubtitle: "3D 그래픽스",
+            meshesOverviewTitle: "프로젝트 개요",
+            meshesOverviewText: "Procedural Geometric Modeling은 3D mesh geometry를 코드로 직접 생성하는 CS250 그래픽스 프로젝트입니다. 이 프로젝트는 vertex position, normal, texture coordinate, index buffer가 함께 작동하여 plane, cube, sphere, torus, cylinder, cone, 그리고 추가 custom clover mesh를 만드는 과정을 보여줍니다.",
+            meshesTasksTitle: "완료한 작업",
+            meshesTasks: [
+                "기존 demo factory system에 새로운 D02 Procedural Meshes 데모를 등록했습니다.",
+                "필요한 shader, texture, material, mesh source file을 프로젝트 빌드에 추가했습니다.",
+                "Plane, cube, sphere, torus, cylinder, cone의 procedural mesh generation을 구현했습니다.",
+                "Mesh 렌더링을 위한 vertex position, normal, UV coordinate, triangle index, line index를 생성했습니다.",
+                "Cylinder와 cone처럼 닫힌 도형을 위한 cap generation을 구현했습니다.",
+                "Parametric surface generation을 실험하기 위해 추가 custom clover mesh를 제작했습니다.",
+                "WebGL release 버전을 빌드하고 이 포트폴리오 페이지에 삽입했습니다."
+            ],
+            meshesReflectionTitle: "회고",
+            meshesReflectionText: "이 프로젝트를 통해 procedural geometry가 외부 모델 파일이 아니라 수학적 규칙으로 어떻게 만들어지는지 이해할 수 있었습니다. 가장 어려웠던 부분은 여러 도형에서 vertex order, triangle winding, normal, cap이 올바르게 작동하도록 맞추는 것이었습니다. 이 과제를 통해 indexed mesh가 중복 데이터를 줄이는 방식과 UV coordinate가 생성된 3D object의 texture 표현에 어떤 영향을 주는지 배웠습니다.",
+            meshesDemoTitle: "데모",
+            meshesDemoLink: "새 탭에서 Procedural Meshes 데모 열기"
         }
     };
 
@@ -237,4 +275,20 @@ function updatePageLanguage(lang) {
 
     setText(".hello-demo-title", translations[lang].helloDemoTitle);
     setText(".hello-demo-link", translations[lang].helloDemoLink);
+
+    // Procedural Meshes project page
+    setHTML(".meshes-project-title", translations[lang].meshesProjectTitle);
+    setText(".meshes-project-subtitle", translations[lang].meshesSubtitle);
+
+    setText(".meshes-overview-title", translations[lang].meshesOverviewTitle);
+    setText(".meshes-overview-text", translations[lang].meshesOverviewText);
+
+    setText(".meshes-tasks-title", translations[lang].meshesTasksTitle);
+    setList(".meshes-tasks-list", translations[lang].meshesTasks);
+
+    setText(".meshes-reflection-title", translations[lang].meshesReflectionTitle);
+    setText(".meshes-reflection-text", translations[lang].meshesReflectionText);
+
+    setText(".meshes-demo-title", translations[lang].meshesDemoTitle);
+    setText(".meshes-demo-link", translations[lang].meshesDemoLink);
 }

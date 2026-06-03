@@ -126,7 +126,28 @@ function updatePageLanguage(lang) {
             meshesReflectionTitle: "Reflection",
             meshesReflectionText: "This project helped me understand how procedural geometry is constructed from mathematical rules rather than imported model files. The most challenging part was making the vertex order, triangle winding, normals, and caps work correctly for different shapes. Through this assignment, I learned how indexed meshes reduce duplicated data and how UV coordinates affect the way textures appear on generated 3D objects.",
             meshesDemoTitle: "Demo",
-            meshesDemoLink: "Open Procedural Meshes Demo in a new tab"
+            meshesDemoLink: "Open Procedural Meshes Demo in a new tab",
+
+            shadowProjectTitle: 'Project <strong>Shadow Mapping</strong>',
+            shadowSubtitle: "3D Graphics",
+            shadowOverviewTitle: "Project Overview",
+            shadowOverviewText: "Shadow Mapping is a CS250 graphics project focused on rendering real-time shadows using a depth texture. The project demonstrates how to render a scene from the light's point of view, store depth information in a framebuffer, and use that shadow map during the main render pass to determine whether each fragment is lit or in shadow.",
+            shadowTasksTitle: "Tasks Completed",
+            shadowTasks: [
+                "Registered the D05 Shadow Mapping demo in the existing demo factory system.",
+                "Added the required shadow mapping shaders, framebuffer files, camera utilities, and project build entries.",
+                "Extended the Texture class to support depth textures and empty RGBA textures for framebuffer rendering.",
+                "Implemented camera view and world matrix calculations used by both the main camera and the light camera.",
+                "Implemented FrameBuffer creation, texture attachment, binding, completeness checking, and cleanup.",
+                "Rendered the scene from the light's point of view to generate a shadow depth map.",
+                "Rendered the final scene using the shadow map, lighting, gamma correction, fog, and debug visualization tools.",
+                "Handled unstable 32-bit depth texture selection by falling back to a more stable 24-bit depth format.",
+                "Built and embedded the WebGL release version into this portfolio page."
+            ],
+            shadowReflectionTitle: "Reflection",
+            shadowReflectionText: "This project helped me understand how shadow mapping connects multiple parts of the graphics pipeline. The most challenging part was making the light camera, depth framebuffer, shadow texture, and shader-space transformations work together correctly. I also learned that graphics features can behave differently depending on texture formats and platform support, so building stable fallback behavior is important for interactive demos.",
+            shadowDemoTitle: "Demo",
+            shadowDemoLink: "Open Shadow Mapping Demo in a new tab"
         },
         ko: {
             home: "홈",
@@ -184,7 +205,28 @@ function updatePageLanguage(lang) {
             meshesReflectionTitle: "회고",
             meshesReflectionText: "이 프로젝트를 통해 procedural geometry가 외부 모델 파일이 아니라 수학적 규칙으로 어떻게 만들어지는지 이해할 수 있었습니다. 가장 어려웠던 부분은 여러 도형에서 vertex order, triangle winding, normal, cap이 올바르게 작동하도록 맞추는 것이었습니다. 이 과제를 통해 indexed mesh가 중복 데이터를 줄이는 방식과 UV coordinate가 생성된 3D object의 texture 표현에 어떤 영향을 주는지 배웠습니다.",
             meshesDemoTitle: "데모",
-            meshesDemoLink: "새 탭에서 Procedural Meshes 데모 열기"
+            meshesDemoLink: "새 탭에서 Procedural Meshes 데모 열기",
+
+            shadowProjectTitle: '프로젝트 <strong>Shadow Mapping</strong>',
+            shadowSubtitle: "3D 그래픽스",
+            shadowOverviewTitle: "프로젝트 개요",
+            shadowOverviewText: "Shadow Mapping은 depth texture를 사용하여 실시간 그림자를 렌더링하는 CS250 그래픽스 프로젝트입니다. 이 프로젝트는 빛의 시점에서 장면을 렌더링하고, framebuffer에 depth 정보를 저장한 뒤, main render pass에서 shadow map을 사용하여 각 fragment가 빛을 받는지 그림자 안에 있는지 판단하는 과정을 보여줍니다.",
+            shadowTasksTitle: "완료한 작업",
+            shadowTasks: [
+                "기존 demo factory system에 D05 Shadow Mapping 데모를 등록했습니다.",
+                "필요한 shadow mapping shader, framebuffer file, camera utility, project build entry를 추가했습니다.",
+                "Framebuffer rendering을 위해 Texture class에 depth texture와 빈 RGBA texture 생성 기능을 추가했습니다.",
+                "Main camera와 light camera에서 사용하는 camera view matrix와 world matrix 계산을 구현했습니다.",
+                "FrameBuffer 생성, texture attachment, binding, completeness checking, cleanup을 구현했습니다.",
+                "빛의 시점에서 장면을 렌더링하여 shadow depth map을 생성했습니다.",
+                "Shadow map, lighting, gamma correction, fog, debug visualization을 사용하여 최종 장면을 렌더링했습니다.",
+                "불안정한 32-bit depth texture 선택 시 더 안정적인 24-bit depth format으로 대체되도록 처리했습니다.",
+                "WebGL release 버전을 빌드하고 이 포트폴리오 페이지에 삽입했습니다."
+            ],
+            shadowReflectionTitle: "회고",
+            shadowReflectionText: "이 프로젝트를 통해 shadow mapping이 그래픽스 파이프라인의 여러 부분과 어떻게 연결되는지 이해할 수 있었습니다. 가장 어려웠던 부분은 light camera, depth framebuffer, shadow texture, shader-space transformation이 올바르게 함께 작동하도록 맞추는 것이었습니다. 또한 texture format과 platform support에 따라 그래픽스 기능의 동작이 달라질 수 있으므로, 안정적인 fallback 처리를 만드는 것이 interactive demo에서 중요하다는 점을 배웠습니다.",
+            shadowDemoTitle: "데모",
+            shadowDemoLink: "새 탭에서 Shadow Mapping 데모 열기"
         }
     };
 
@@ -291,4 +333,20 @@ function updatePageLanguage(lang) {
 
     setText(".meshes-demo-title", translations[lang].meshesDemoTitle);
     setText(".meshes-demo-link", translations[lang].meshesDemoLink);
+
+    // Shadow Mapping project page
+    setHTML(".shadow-project-title", translations[lang].shadowProjectTitle);
+    setText(".shadow-project-subtitle", translations[lang].shadowSubtitle);
+
+    setText(".shadow-overview-title", translations[lang].shadowOverviewTitle);
+    setText(".shadow-overview-text", translations[lang].shadowOverviewText);
+
+    setText(".shadow-tasks-title", translations[lang].shadowTasksTitle);
+    setList(".shadow-tasks-list", translations[lang].shadowTasks);
+
+    setText(".shadow-reflection-title", translations[lang].shadowReflectionTitle);
+    setText(".shadow-reflection-text", translations[lang].shadowReflectionText);
+
+    setText(".shadow-demo-title", translations[lang].shadowDemoTitle);
+    setText(".shadow-demo-link", translations[lang].shadowDemoLink);
 }

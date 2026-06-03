@@ -58,33 +58,64 @@
         </nav>
     </header>
 
+    <!-- Theme and Language Toggle Buttons -->
+    <div class="controls">
+        <button class="theme-toggle" aria-label="toggle theme" title="Toggle Dark/Bright">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="language-toggle" aria-label="toggle language" title="Toggle English/Korean">
+            <span>EN</span>
+        </button>
+    </div>
+
     <!-- Introduction -->
     <section class="intro">
-        <h1 class="section__title section__title--intro">
+        <h1 class="section__title section__title--intro shadow-project-title">
             Project <strong>Shadow Mapping</strong>
         </h1>
-        <p class="section__subtitle section__subtitle--intro">3D Graphics</p>
+        <p class="section__subtitle section__subtitle--intro shadow-project-subtitle">3D Graphics</p>
         <img src="../img/portfolio_thumbnails/05_shadow.jpg" alt="a picture of this portfolio item" class="intro__img">
     </section>
 
     <div class="portfolio-item-individual">
-        <h2>Project Overview</h2>
-        <p>Provide a brief description of the project, its purpose, and what you aimed to achieve.</p>
+        <h2 class="shadow-overview-title">Project Overview</h2>
+        <p class="shadow-overview-text">
+            Shadow Mapping is a CS250 graphics project focused on rendering real-time shadows using a depth texture.
+            The project demonstrates how to render a scene from the light's point of view, store depth information in a framebuffer,
+            and use that shadow map during the main render pass to determine whether each fragment is lit or in shadow.
+        </p>
 
-        <h2>Tasks Completed</h2>
-        <ul>
-            <li>Describe the tasks you completed for this project.</li>
-            <li>Be specific about your contributions and the technologies used.</li>
+        <h2 class="shadow-tasks-title">Tasks Completed</h2>
+        <ul class="shadow-tasks-list">
+            <li>Registered the D05 Shadow Mapping demo in the existing demo factory system.</li>
+            <li>Added the required shadow mapping shaders, framebuffer files, camera utilities, and project build entries.</li>
+            <li>Extended the Texture class to support depth textures and empty RGBA textures for framebuffer rendering.</li>
+            <li>Implemented camera view and world matrix calculations used by both the main camera and the light camera.</li>
+            <li>Implemented FrameBuffer creation, texture attachment, binding, completeness checking, and cleanup.</li>
+            <li>Rendered the scene from the light's point of view to generate a shadow depth map.</li>
+            <li>Rendered the final scene using the shadow map, lighting, gamma correction, fog, and debug visualization tools.</li>
+            <li>Handled unstable 32-bit depth texture selection by falling back to a more stable 24-bit depth format.</li>
+            <li>Built and embedded the WebGL release version into this portfolio page.</li>
         </ul>
 
-        <h2>Reflection</h2>
-        <p>Reflect on the project, discussing any challenges faced, solutions implemented, and what you learned from the
-            experience.</p>
+        <h2 class="shadow-reflection-title">Reflection</h2>
+        <p class="shadow-reflection-text">
+            This project helped me understand how shadow mapping connects multiple parts of the graphics pipeline. The most challenging part
+            was making the light camera, depth framebuffer, shadow texture, and shader-space transformations work together correctly. I also learned
+            that graphics features can behave differently depending on texture formats and platform support, so building stable fallback behavior
+            is important for interactive demos.
+        </p>
     </div>
 
     <div class="portfolio-item-individual">
-        <h2>Demo</h2>
+        <h2 class="shadow-demo-title">Demo</h2>
         <iframe id="demo" src="../webgl/D05ShadowMapping/graphics_fun.html?start=shadow" tabindex="-1"></iframe>
+
+        <p>
+            <a class="shadow-demo-link" href="../webgl/D05ShadowMapping/graphics_fun.html?start=shadow" target="_blank">
+                Open Shadow Mapping Demo in a new tab
+            </a>
+        </p>
     </div>
 
     <!-- Footer -->

@@ -724,3 +724,11 @@ body.dark-theme .intro .hello-project-title {
 body.dark-theme .intro .meshes-project-title {
     color: var(--clr-light);
 }
+
+.intro .shadow-project-title {
+    color: var(--clr-dark);
+}
+
+body.dark-theme .intro .shadow-project-title {
+    color: var(--clr-light);
+}

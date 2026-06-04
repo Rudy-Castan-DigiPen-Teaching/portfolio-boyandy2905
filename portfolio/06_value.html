@@ -58,33 +58,65 @@
         </nav>
     </header>
 
+    <!-- Theme and Language Toggle Buttons -->
+    <div class="controls">
+        <button class="theme-toggle" aria-label="toggle theme" title="Toggle Dark/Bright">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="language-toggle" aria-label="toggle language" title="Toggle English/Korean">
+            <span>EN</span>
+        </button>
+    </div>
+
     <!-- Introduction -->
     <section class="intro">
-        <h1 class="section__title section__title--intro">
+        <h1 class="section__title section__title--intro value-project-title">
             Project <strong>Value Noise</strong>
         </h1>
-        <p class="section__subtitle section__subtitle--intro">3D Graphics</p>
+        <p class="section__subtitle section__subtitle--intro value-project-subtitle">3D Graphics</p>
         <img src="../img/portfolio_thumbnails/06_value.jpg" alt="a picture of this portfolio item" class="intro__img">
     </section>
 
     <div class="portfolio-item-individual">
-        <h2>Project Overview</h2>
-        <p>Provide a brief description of the project, its purpose, and what you aimed to achieve.</p>
+        <h2 class="value-overview-title">Project Overview</h2>
+        <p class="value-overview-text">
+            Value Noise is a CS250 graphics project focused on generating procedural textures using a C++ value noise algorithm.
+            The project demonstrates 1D, 2D, and 3D noise generation, permutation hashing, smoothing functions, interpolation,
+            texture uploading, and WebGL shader rendering for visualizing procedural noise patterns.
+        </p>
 
-        <h2>Tasks Completed</h2>
-        <ul>
-            <li>Describe the tasks you completed for this project.</li>
-            <li>Be specific about your contributions and the technologies used.</li>
+        <h2 class="value-tasks-title">Tasks Completed</h2>
+        <ul class="value-tasks-list">
+            <li>Registered the D06 Value Noise demo in the existing demo factory system.</li>
+            <li>Added the required D06 shader files and noise source files to the project build.</li>
+            <li>Implemented texture uploading so generated RGBA noise data can be updated on the GPU.</li>
+            <li>Implemented fade functions for linear, cosine, smoothstep, and quintic smoothing.</li>
+            <li>Implemented linear, bilinear, and trilinear interpolation helpers for 1D, 2D, and 3D noise.</li>
+            <li>Implemented noise coordinate generation for base indices, next indices, and interpolation values.</li>
+            <li>Implemented permutation hashing to support repeatable and tileable procedural noise.</li>
+            <li>Implemented Value Noise evaluation for 1D, 2D, and 3D inputs.</li>
+            <li>Adjusted texture filtering and wrapping so low-resolution noise and tiling behave correctly in the WebGL demo.</li>
+            <li>Built and embedded the WebGL release version into this portfolio page.</li>
         </ul>
 
-        <h2>Reflection</h2>
-        <p>Reflect on the project, discussing any challenges faced, solutions implemented, and what you learned from the
-            experience.</p>
+        <h2 class="value-reflection-title">Reflection</h2>
+        <p class="value-reflection-text">
+            This project helped me understand how procedural noise is built from random values, hashing, smoothing, and interpolation.
+            The most challenging part was making the 1D, 2D, and 3D noise modes behave consistently while also matching the expected
+            texture tiling and filtering behavior. I also learned how CPU-generated data can be uploaded to a GPU texture and displayed
+            through a simple shader in an interactive graphics demo.
+        </p>
     </div>
 
     <div class="portfolio-item-individual">
-        <h2>Demo</h2>
+        <h2 class="value-demo-title">Demo</h2>
         <iframe id="demo" src="../webgl/D06ValueNoise/graphics_fun.html?start=value" tabindex="-1"></iframe>
+
+        <p>
+            <a class="value-demo-link" href="../webgl/D06ValueNoise/graphics_fun.html?start=value" target="_blank">
+                Open Value Noise Demo in a new tab
+            </a>
+        </p>
     </div>
 
     <!-- Footer -->

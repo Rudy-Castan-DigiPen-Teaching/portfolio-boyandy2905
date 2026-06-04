@@ -147,7 +147,29 @@ function updatePageLanguage(lang) {
             shadowReflectionTitle: "Reflection",
             shadowReflectionText: "This project helped me understand how shadow mapping connects multiple parts of the graphics pipeline. The most challenging part was making the light camera, depth framebuffer, shadow texture, and shader-space transformations work together correctly. I also learned that graphics features can behave differently depending on texture formats and platform support, so building stable fallback behavior is important for interactive demos.",
             shadowDemoTitle: "Demo",
-            shadowDemoLink: "Open Shadow Mapping Demo in a new tab"
+            shadowDemoLink: "Open Shadow Mapping Demo in a new tab",
+
+            valueProjectTitle: 'Project <strong>Value Noise</strong>',
+            valueSubtitle: "3D Graphics",
+            valueOverviewTitle: "Project Overview",
+            valueOverviewText: "Value Noise is a CS250 graphics project focused on generating procedural textures using a C++ value noise algorithm. The project demonstrates 1D, 2D, and 3D noise generation, permutation hashing, smoothing functions, interpolation, texture uploading, and WebGL shader rendering for visualizing procedural noise patterns.",
+            valueTasksTitle: "Tasks Completed",
+            valueTasks: [
+                "Registered the D06 Value Noise demo in the existing demo factory system.",
+                "Added the required D06 shader files and noise source files to the project build.",
+                "Implemented texture uploading so generated RGBA noise data can be updated on the GPU.",
+                "Implemented fade functions for linear, cosine, smoothstep, and quintic smoothing.",
+                "Implemented linear, bilinear, and trilinear interpolation helpers for 1D, 2D, and 3D noise.",
+                "Implemented noise coordinate generation for base indices, next indices, and interpolation values.",
+                "Implemented permutation hashing to support repeatable and tileable procedural noise.",
+                "Implemented Value Noise evaluation for 1D, 2D, and 3D inputs.",
+                "Adjusted texture filtering and wrapping so low-resolution noise and tiling behave correctly in the WebGL demo.",
+                "Built and embedded the WebGL release version into this portfolio page."
+            ],
+            valueReflectionTitle: "Reflection",
+            valueReflectionText: "This project helped me understand how procedural noise is built from random values, hashing, smoothing, and interpolation. The most challenging part was making the 1D, 2D, and 3D noise modes behave consistently while also matching the expected texture tiling and filtering behavior. I also learned how CPU-generated data can be uploaded to a GPU texture and displayed through a simple shader in an interactive graphics demo.",
+            valueDemoTitle: "Demo",
+            valueDemoLink: "Open Value Noise Demo in a new tab"
         },
         ko: {
             home: "홈",
@@ -226,7 +248,29 @@ function updatePageLanguage(lang) {
             shadowReflectionTitle: "회고",
             shadowReflectionText: "이 프로젝트를 통해 shadow mapping이 그래픽스 파이프라인의 여러 부분과 어떻게 연결되는지 이해할 수 있었습니다. 가장 어려웠던 부분은 light camera, depth framebuffer, shadow texture, shader-space transformation이 올바르게 함께 작동하도록 맞추는 것이었습니다. 또한 texture format과 platform support에 따라 그래픽스 기능의 동작이 달라질 수 있으므로, 안정적인 fallback 처리를 만드는 것이 interactive demo에서 중요하다는 점을 배웠습니다.",
             shadowDemoTitle: "데모",
-            shadowDemoLink: "새 탭에서 Shadow Mapping 데모 열기"
+            shadowDemoLink: "새 탭에서 Shadow Mapping 데모 열기",
+
+            valueProjectTitle: '프로젝트 <strong>Value Noise</strong>',
+            valueSubtitle: "3D 그래픽스",
+            valueOverviewTitle: "프로젝트 개요",
+            valueOverviewText: "Value Noise는 C++ value noise algorithm을 사용하여 procedural texture를 생성하는 CS250 그래픽스 프로젝트입니다. 이 프로젝트는 1D, 2D, 3D noise generation, permutation hashing, smoothing function, interpolation, texture uploading, 그리고 procedural noise pattern을 시각화하기 위한 WebGL shader rendering을 보여줍니다.",
+            valueTasksTitle: "완료한 작업",
+            valueTasks: [
+                "기존 demo factory system에 D06 Value Noise 데모를 등록했습니다.",
+                "필요한 D06 shader file과 noise source file을 프로젝트 빌드에 추가했습니다.",
+                "생성된 RGBA noise data를 GPU texture로 갱신할 수 있도록 texture upload 기능을 구현했습니다.",
+                "Linear, cosine, smoothstep, quintic smoothing을 위한 fade function을 구현했습니다.",
+                "1D, 2D, 3D noise를 위한 linear, bilinear, trilinear interpolation helper를 구현했습니다.",
+                "Base index, next index, interpolation value를 계산하는 noise coordinate generation을 구현했습니다.",
+                "반복 가능하고 tileable한 procedural noise를 만들기 위해 permutation hashing을 구현했습니다.",
+                "1D, 2D, 3D input에 대한 Value Noise evaluation을 구현했습니다.",
+                "낮은 해상도의 noise와 tiling이 WebGL demo에서 올바르게 보이도록 texture filtering과 wrapping을 조정했습니다.",
+                "WebGL release 버전을 빌드하고 이 포트폴리오 페이지에 삽입했습니다."
+            ],
+            valueReflectionTitle: "회고",
+            valueReflectionText: "이 프로젝트를 통해 procedural noise가 random value, hashing, smoothing, interpolation을 통해 어떻게 만들어지는지 이해할 수 있었습니다. 가장 어려웠던 부분은 1D, 2D, 3D noise mode가 일관되게 동작하도록 만들고, texture tiling과 filtering이 예시와 비슷하게 보이도록 맞추는 것이었습니다. 또한 CPU에서 생성한 데이터를 GPU texture로 업로드하고 simple shader를 통해 interactive graphics demo에 표시하는 방법을 배웠습니다.",
+            valueDemoTitle: "데모",
+            valueDemoLink: "새 탭에서 Value Noise 데모 열기"
         }
     };
 
@@ -349,4 +393,20 @@ function updatePageLanguage(lang) {
 
     setText(".shadow-demo-title", translations[lang].shadowDemoTitle);
     setText(".shadow-demo-link", translations[lang].shadowDemoLink);
+
+    // Value Noise project page
+    setHTML(".value-project-title", translations[lang].valueProjectTitle);
+    setText(".value-project-subtitle", translations[lang].valueSubtitle);
+
+    setText(".value-overview-title", translations[lang].valueOverviewTitle);
+    setText(".value-overview-text", translations[lang].valueOverviewText);
+
+    setText(".value-tasks-title", translations[lang].valueTasksTitle);
+    setList(".value-tasks-list", translations[lang].valueTasks);
+
+    setText(".value-reflection-title", translations[lang].valueReflectionTitle);
+    setText(".value-reflection-text", translations[lang].valueReflectionText);
+
+    setText(".value-demo-title", translations[lang].valueDemoTitle);
+    setText(".value-demo-link", translations[lang].valueDemoLink);
 }

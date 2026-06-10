@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="../img/face.jpg">
+
     <!-- Help auto scale for desktop & mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sehoon Kim Portfolio Website</title>
@@ -57,33 +58,64 @@
         </nav>
     </header>
 
+    <!-- Theme and Language Toggle Buttons -->
+    <div class="controls">
+        <button class="theme-toggle" aria-label="toggle theme" title="Toggle Dark/Bright">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="language-toggle" aria-label="toggle language" title="Toggle English/Korean">
+            <span>EN</span>
+        </button>
+    </div>
+
     <!-- Introduction -->
     <section class="intro">
-        <h1 class="section__title section__title--intro">
+        <h1 class="section__title section__title--intro gradient-project-title">
             Project <strong>Gradient Noise</strong>
         </h1>
-        <p class="section__subtitle section__subtitle--intro">3D Graphics</p>
+        <p class="section__subtitle section__subtitle--intro gradient-project-subtitle">3D Graphics</p>
         <img src="../img/portfolio_thumbnails/07_gradient.jpg" alt="a picture of this portfolio item" class="intro__img">
     </section>
 
     <div class="portfolio-item-individual">
-        <h2>Project Overview</h2>
-        <p>Provide a brief description of the project, its purpose, and what you aimed to achieve.</p>
+        <h2 class="gradient-overview-title">Project Overview</h2>
+        <p class="gradient-overview-text">
+            Gradient Noise is a CS250 graphics project focused on implementing Improved 3D Perlin Gradient Noise in GLSL.
+            The project generates procedural noise patterns on the GPU using an offscreen framebuffer, then visualizes
+            the generated texture as both a 2D texture and a displaced 3D surface.
+        </p>
 
-        <h2>Tasks Completed</h2>
-        <ul>
-            <li>Describe the tasks you completed for this project.</li>
-            <li>Be specific about your contributions and the technologies used.</li>
+        <h2 class="gradient-tasks-title">Tasks Completed</h2>
+        <ul class="gradient-tasks-list">
+            <li>Registered the D07 Gradient Noise demo in the existing demo factory system.</li>
+            <li>Added the required D07 source files, shader files, and build entries to the project.</li>
+            <li>Extended the Texture class to support additional color formats such as RGBA8, RGBA32F, and R32F.</li>
+            <li>Updated the FrameBuffer class to support configurable color texture formats.</li>
+            <li>Implemented Improved 3D Perlin Gradient Noise in GLSL using fixed gradient directions and a permutation table.</li>
+            <li>Implemented Gradient, Fractal Sum, Turbulence, Marble, and Wood procedural noise patterns.</li>
+            <li>Created shaders to display the generated noise texture as a textured quad.</li>
+            <li>Created a surface vertex shader that displaces a plane mesh using the generated noise texture.</li>
+            <li>Built and embedded the WebGL release version into this portfolio page.</li>
         </ul>
 
-        <h2>Reflection</h2>
-        <p>Reflect on the project, discussing any challenges faced, solutions implemented, and what you learned from the
-            experience.</p>
+        <h2 class="gradient-reflection-title">Reflection</h2>
+        <p class="gradient-reflection-text">
+            This project helped me understand how gradient noise differs from value noise. Instead of interpolating random values directly,
+            gradient noise uses direction vectors and dot products to create smoother procedural patterns. The most challenging part was making
+            the shader-based noise, framebuffer texture format, tiling behavior, and surface displacement work together correctly. Through this assignment,
+            I learned how procedural noise can be generated on the GPU and reused for both texture visualization and terrain-like surface rendering.
+        </p>
     </div>
 
     <div class="portfolio-item-individual">
-        <h2>Demo</h2>
+        <h2 class="gradient-demo-title">Demo</h2>
         <iframe id="demo" src="../webgl/D07GradientNoise/graphics_fun.html?start=gradient" tabindex="-1"></iframe>
+
+        <p>
+            <a class="gradient-demo-link" href="../webgl/D07GradientNoise/graphics_fun.html?start=gradient" target="_blank">
+                Open Gradient Noise Demo in a new tab
+            </a>
+        </p>
     </div>
 
     <!-- Footer -->

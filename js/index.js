@@ -169,7 +169,28 @@ function updatePageLanguage(lang) {
             valueReflectionTitle: "Reflection",
             valueReflectionText: "This project helped me understand how procedural noise is built from random values, hashing, smoothing, and interpolation. The most challenging part was making the 1D, 2D, and 3D noise modes behave consistently while also matching the expected texture tiling and filtering behavior. I also learned how CPU-generated data can be uploaded to a GPU texture and displayed through a simple shader in an interactive graphics demo.",
             valueDemoTitle: "Demo",
-            valueDemoLink: "Open Value Noise Demo in a new tab"
+            valueDemoLink: "Open Value Noise Demo in a new tab",
+
+            gradientProjectTitle: 'Project <strong>Gradient Noise</strong>',
+            gradientSubtitle: "3D Graphics",
+            gradientOverviewTitle: "Project Overview",
+            gradientOverviewText: "Gradient Noise is a CS250 graphics project focused on implementing Improved 3D Perlin Gradient Noise in GLSL. The project generates procedural noise patterns on the GPU using an offscreen framebuffer, then visualizes the generated texture as both a 2D texture and a displaced 3D surface.",
+            gradientTasksTitle: "Tasks Completed",
+            gradientTasks: [
+                "Registered the D07 Gradient Noise demo in the existing demo factory system.",
+                "Added the required D07 source files, shader files, and build entries to the project.",
+                "Extended the Texture class to support additional color formats such as RGBA8, RGBA32F, and R32F.",
+                "Updated the FrameBuffer class to support configurable color texture formats.",
+                "Implemented Improved 3D Perlin Gradient Noise in GLSL using fixed gradient directions and a permutation table.",
+                "Implemented Gradient, Fractal Sum, Turbulence, Marble, and Wood procedural noise patterns.",
+                "Created shaders to display the generated noise texture as a textured quad.",
+                "Created a surface vertex shader that displaces a plane mesh using the generated noise texture.",
+                "Built and embedded the WebGL release version into this portfolio page."
+            ],
+            gradientReflectionTitle: "Reflection",
+            gradientReflectionText: "This project helped me understand how gradient noise differs from value noise. Instead of interpolating random values directly, gradient noise uses direction vectors and dot products to create smoother procedural patterns. The most challenging part was making the shader-based noise, framebuffer texture format, tiling behavior, and surface displacement work together correctly. Through this assignment, I learned how procedural noise can be generated on the GPU and reused for both texture visualization and terrain-like surface rendering.",
+            gradientDemoTitle: "Demo",
+            gradientDemoLink: "Open Gradient Noise Demo in a new tab"
         },
         ko: {
             home: "홈",
@@ -270,7 +291,28 @@ function updatePageLanguage(lang) {
             valueReflectionTitle: "회고",
             valueReflectionText: "이 프로젝트를 통해 procedural noise가 random value, hashing, smoothing, interpolation을 통해 어떻게 만들어지는지 이해할 수 있었습니다. 가장 어려웠던 부분은 1D, 2D, 3D noise mode가 일관되게 동작하도록 만들고, texture tiling과 filtering이 예시와 비슷하게 보이도록 맞추는 것이었습니다. 또한 CPU에서 생성한 데이터를 GPU texture로 업로드하고 simple shader를 통해 interactive graphics demo에 표시하는 방법을 배웠습니다.",
             valueDemoTitle: "데모",
-            valueDemoLink: "새 탭에서 Value Noise 데모 열기"
+            valueDemoLink: "새 탭에서 Value Noise 데모 열기",
+
+            gradientProjectTitle: '프로젝트 <strong>Gradient Noise</strong>',
+            gradientSubtitle: "3D 그래픽스",
+            gradientOverviewTitle: "프로젝트 개요",
+            gradientOverviewText: "Gradient Noise는 GLSL에서 Improved 3D Perlin Gradient Noise를 구현하는 CS250 그래픽스 프로젝트입니다. 이 프로젝트는 offscreen framebuffer를 사용하여 GPU에서 procedural noise pattern을 생성하고, 생성된 texture를 2D texture와 displacement가 적용된 3D surface로 시각화합니다.",
+            gradientTasksTitle: "완료한 작업",
+            gradientTasks: [
+                "기존 demo factory system에 D07 Gradient Noise 데모를 등록했습니다.",
+                "필요한 D07 source file, shader file, build entry를 프로젝트에 추가했습니다.",
+                "RGBA8, RGBA32F, R32F 같은 추가 color format을 지원하도록 Texture class를 확장했습니다.",
+                "설정 가능한 color texture format을 지원하도록 FrameBuffer class를 수정했습니다.",
+                "고정된 gradient direction과 permutation table을 사용하여 GLSL에서 Improved 3D Perlin Gradient Noise를 구현했습니다.",
+                "Gradient, Fractal Sum, Turbulence, Marble, Wood procedural noise pattern을 구현했습니다.",
+                "생성된 noise texture를 textured quad로 표시하는 shader를 작성했습니다.",
+                "생성된 noise texture를 사용하여 plane mesh를 displacement하는 surface vertex shader를 작성했습니다.",
+                "WebGL release 버전을 빌드하고 이 포트폴리오 페이지에 삽입했습니다."
+            ],
+            gradientReflectionTitle: "회고",
+            gradientReflectionText: "이 프로젝트를 통해 Gradient Noise가 Value Noise와 어떻게 다른지 이해할 수 있었습니다. Gradient Noise는 random value를 직접 보간하는 대신 direction vector와 dot product를 사용하여 더 부드러운 procedural pattern을 만듭니다. 가장 어려웠던 부분은 shader 기반 noise, framebuffer texture format, tiling behavior, surface displacement가 함께 올바르게 동작하도록 맞추는 것이었습니다. 이 과제를 통해 GPU에서 procedural noise를 생성하고 이를 texture visualization과 terrain-like surface rendering에 재사용하는 방법을 배웠습니다.",
+            gradientDemoTitle: "데모",
+            gradientDemoLink: "새 탭에서 Gradient Noise 데모 열기"
         }
     };
 
@@ -409,4 +451,20 @@ function updatePageLanguage(lang) {
 
     setText(".value-demo-title", translations[lang].valueDemoTitle);
     setText(".value-demo-link", translations[lang].valueDemoLink);
+
+    // Gradient Noise project page
+    setHTML(".gradient-project-title", translations[lang].gradientProjectTitle);
+    setText(".gradient-project-subtitle", translations[lang].gradientSubtitle);
+
+    setText(".gradient-overview-title", translations[lang].gradientOverviewTitle);
+    setText(".gradient-overview-text", translations[lang].gradientOverviewText);
+
+    setText(".gradient-tasks-title", translations[lang].gradientTasksTitle);
+    setList(".gradient-tasks-list", translations[lang].gradientTasks);
+
+    setText(".gradient-reflection-title", translations[lang].gradientReflectionTitle);
+    setText(".gradient-reflection-text", translations[lang].gradientReflectionText);
+
+    setText(".gradient-demo-title", translations[lang].gradientDemoTitle);
+    setText(".gradient-demo-link", translations[lang].gradientDemoLink);
 }

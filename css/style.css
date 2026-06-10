@@ -740,3 +740,11 @@ body.dark-theme .intro .shadow-project-title {
 body.dark-theme .intro .value-project-title {
     color: var(--clr-light);
 }
+
+.intro .gradient-project-title {
+    color: var(--clr-dark);
+}
+
+body.dark-theme .intro .gradient-project-title {
+    color: var(--clr-light);
+}
